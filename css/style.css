@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #fff200;
+    box-sizing: border-box;
+    font-family: 'STIX Two Text', serif;
+}
+
+[data-scroll-container] {
+    background-color: #fff200;
+}
+
+[data-scroll-section] {
+    min-height: 100vh;
+    background-color: #fff200;
+}
