@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Erosion';
+    src: url('NewFont-Regular.woff2') format('woff2'),
+        url('NewFont-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --font-title: 'Erosion', sans-serif;
+    --font-text: 'STIX Two Text', serif;
+    --black: #000000;
+    --yellow: #fff200;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +21,36 @@
 
 html, body {
     height: 100%;
-    overflow: hidden;
-    background-color: #fff200;
+    overflow-x: hidden;
+    background-color: var(--yellow);
     box-sizing: border-box;
-    font-family: 'STIX Two Text', serif;
+    font-family: var(--font-text);
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-family: var(--font-title);
 }
 
 [data-scroll-container] {
-    background-color: #fff200;
+    background-color: var(--yellow);
 }
 
 [data-scroll-section] {
     min-height: 100vh;
-    background-color: #fff200;
+    background-color: var(--yellow);
+}
+
+.col {
+    float: left;
+}
+
+.col-medium {
+    width: 25%;
+}
+.col-small {
+    width: 15%;
+}
+.col-large {
+    width: 60%;
 }
