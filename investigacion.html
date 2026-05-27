@@ -44,30 +44,27 @@
         /* S1 HEADER */
         .s1 { display: grid; grid-template-columns: 0.9fr 0.3fr 1fr; height: 1080px; }
         .s1-col1 {
-    background: #fff200;
-    padding: 28px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 16px;
-    overflow: hidden;
-}
+            background: #fff200;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 16px;
+            overflow: hidden;
+        }
         .s1-supertitulo { font-family: 'STIX Two Text', serif; font-style: italic; font-size: 20px; text-transform: uppercase; line-height: 1.5; margin-bottom: 16px; text-align: center; }
-.s1-mapa { width: 80%; object-fit: contain; display: block; margin: 0 auto; }
+        .s1-mapa { width: 80%; object-fit: contain; display: block; margin: 0 auto; }
         .s1-col2 { overflow: hidden; }
-.s1-col3 { 
-    background: #fff200; 
-    padding: 28px 40px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start; 
-    align-items: flex-end; 
-    gap: 200px; 
-}        .logo-link img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+        .s1-col3 {
+            background: #fff200;
+            padding: 28px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            gap: 200px;
+        }
+        .logo-link img { width: 100%; height: auto; object-fit: contain; }
         .logo-link:hover { opacity: 0.7; }
         .abstract-bloque { width: 100%; }
         .abstract-label { font-family: 'STIX Two Text', serif; font-style: italic; font-size: 24px; display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
@@ -76,10 +73,51 @@
         .abstract-texto em { font-style: italic; }
 
         /* S2 INTRO */
-        .s2 { display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: auto auto; min-height: 600px; }
-        .s2-texto { background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; }
-        .s2-foto-grande { grid-row: 1 / 3; min-height: 500px; }
-        .s2-foto-chica { min-height: 250px; }
+        .s2 {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            grid-template-rows: auto auto;
+            min-height: 600px;
+        }
+        .s2-texto {
+            background-image: url('img/fotos_investigacion/inv-02.png');
+            background-size: cover;
+            background-position: center;
+            background-color: #ffffff;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 18px;
+            grid-row: 1;
+            grid-column: 1;
+        }
+        .s2-foto-grande {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            overflow: hidden;
+        }
+        .s2-foto-grande img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .s2-foto-chica {
+            grid-row: 2;
+            grid-column: 1;
+            min-height: 260px;
+            overflow: hidden;
+            background-image: url('img/fotos_investigacion/inv-02.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .s2-foto-chica img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
         /* S3 EL CUERPO */
         .s3 { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
@@ -130,7 +168,6 @@
         .footer-final { background: #231f20; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; }
         .footer-logo { font-family: 'Erosion', sans-serif; font-size: 36px; color: #fff200; text-transform: uppercase; line-height: 1.1; }
         .footer-creditos { font-family: 'ApercuMono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #fff200; text-align: right; line-height: 2; }
-
     </style>
 </head>
 <body>
@@ -138,15 +175,15 @@
 <!-- S1 HEADER -->
 <section class="s1">
     <div class="s1-col1">
-    <p class="s1-supertitulo">La erosión hídrica y sus<br>efectos en la vía pública</p>
-    <div style="display:flex; flex-direction:column; align-items:center; margin-top:-40px;">
-        <img class="s1-mapa" src="img/fotos_investigacion/inv-01.png" alt="Carta Hidrográfica" style="object-fit:contain; width:80%;">
-        <p class="caption" style="display:flex; justify-content:space-between; width:80%; margin-top:8px;">
-            <span>Carta hidrográfica</span>
-            <span>Valle de México 1862</span>
-        </p>
+        <p class="s1-supertitulo">La erosión hídrica y sus<br>efectos en la vía pública</p>
+        <div style="display:flex; flex-direction:column; align-items:center; margin-top:-40px;">
+            <img class="s1-mapa" src="img/fotos_investigacion/inv-01.png" alt="Carta Hidrográfica" style="object-fit:contain; width:80%;">
+            <p class="caption" style="display:flex; justify-content:space-between; width:80%; margin-top:8px;">
+                <span>Carta hidrográfica</span>
+                <span>Valle de México 1862</span>
+            </p>
+        </div>
     </div>
-</div>
     <div class="s1-col2">
         <img src="img/fotos_investigacion/inv-02.png" alt="Textura" style="object-fit:cover;">
     </div>
@@ -170,7 +207,7 @@
         </div>
     </div>
     <div class="s2-foto-grande">
-        <img src="img/fotos_investigacion/inv-5.jpg" alt="Inundación" style="height:100%;">
+        <img src="img/fotos_investigacion/inv-5.jpg" alt="Inundación">
     </div>
     <div class="s2-foto-chica">
         <img src="img/fotos_investigacion/inv-6.jpg" alt="Bache">
