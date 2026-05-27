@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frottages — Anatomía de un Suelo Fracturado</title>
+    <style>
+        @font-face {
+    font-family: 'Erosion';
+    src: url('css/NewFont-Regular.woff2') format('woff2'),
+         url('css/NewFont-Regular.woff') format('woff');
+        
+        }
+        @font-face {
+            font-family: 'ApercuMono';
+            src: url('ApercuMonoProRegular.ttf') format('truetype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'ApercuMono';
+            src: url('ApercuMonoProBold.ttf') format('truetype');
+            font-weight: 700;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #fff200;
+            color: #231f20;
+            font-family: 'ApercuMono', monospace;
+        }
+
+        header {
+            padding: 32px 40px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-izq {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.header-izq::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #231f20;
+    order: 1;
+}
+
+        .header-titulo {
+            font-family: 'Erosion', sans-serif;
+            font-size: clamp(28px, 4vw, 52px);
+            letter-spacing: 0.02em;
+            line-height: 1;
+        }
+
+        .header-subtitulo {
+            font-family: 'ApercuMono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            line-height: 1.5;
+            max-width: 200px;
+            padding-top: 10px;
+
+        }
+
+        .header-der {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            padding-top: 4px;
+        }
+
+        .punto-header {
+            width: 10px;
+            height: 10px;
+            background: #231f20;
+            border-radius: 50%;
+        }
+
+        .puntos-grupo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        nav {
+            padding: 12px 40px;
+            display: flex;
+            gap: 32px;
+            border-bottom: 1px solid #231f20;
+        }
+
+        nav a {
+            font-family: 'ApercuMono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #231f20;
+            text-decoration: none;
+        }
+        nav a:hover { text-decoration: underline; }
+
+        .galeria {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px 24px;
+        }
+
+        .item { cursor: pointer; }
+
+        .item-img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            background: #fff;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+
+        .item:hover .item-img { opacity: 0.85; }
+
+        .item-num {
+            font-family: 'ApercuMono', monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+            color: #231f20;
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 229, 0, 0.96);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #lightbox.activo { display: flex; }
+
+        #lightbox-img {
+            max-height: 82vh;
+            max-width: 70vw;
+            object-fit: contain;
+            display: block;
+        }
+
+        #lightbox-num {
+            font-family: 'ApercuMono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            margin-top: 16px;
+            color: #231f20;
+        }
+
+        #lightbox-cerrar {
+            position: fixed;
+            top: 28px;
+            right: 40px;
+            font-family: 'ApercuMono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #231f20;
+        }
+
+        #lightbox-prev, #lightbox-next {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'ApercuMono', monospace;
+            font-size: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #231f20;
+            padding: 20px;
+        }
+
+        #lightbox-prev { left: 20px; }
+        #lightbox-next { right: 20px; }
+
+        footer {
+    background: #fff;
+    padding: 48px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.btn-footer {
+    font-family: 'ApercuMono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #231f20;
+    text-decoration: none;
+    border: 1.5px solid #231f20;
+    padding: 14px 32px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-footer:hover {
+    background: #231f20;
+    color: #fff200;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+   <div class="header-izq">
+    <h1 class="header-titulo">FROTTAGE</h1>
+    <div style="width:1px; background:#231f20; align-self:stretch;"></div>
+    <span class="header-subtitulo">Registro análogo del suelo de Santa Martha Acatitla, Iztapalapa, CDMX</span>
+</div>
+    <a href="index.html" style="text-decoration:none;">
+        <div class="header-der">
+            <div class="puntos-grupo">
+                <div class="punto-header"></div>
+                <div class="punto-header"></div>
+                <div class="punto-header"></div>
+                <div class="punto-header"></div>
+            </div>
+            <div class="punto-header" style="margin-top:15px"></div>
+        </div>
+    </a>
+</header>
+
+    <div class="galeria">
+        <div class="item" onclick="abrirLightbox(0)">
+            <img class="item-img" src="img/JPEG/Frotaje-01.jpg" alt="Frottage 01">
+            <p class="item-num">01.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(1)">
+            <img class="item-img" src="img/JPEG/Frotaje-02.jpg" alt="Frottage 02">
+            <p class="item-num">02.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(2)">
+            <img class="item-img" src="img/JPEG/Frotaje-03.jpg" alt="Frottage 03">
+            <p class="item-num">03.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(3)">
+            <img class="item-img" src="img/JPEG/Frotaje-04.jpg" alt="Frottage 04">
+            <p class="item-num">04.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(4)">
+            <img class="item-img" src="img/JPEG/Frotaje-05.jpg" alt="Frottage 05">
+            <p class="item-num">05.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(5)">
+            <img class="item-img" src="img/JPEG/Frotaje-6.jpg" alt="Frottage 06">
+            <p class="item-num">06.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(6)">
+            <img class="item-img" src="img/JPEG/Frotaje-7.jpg" alt="Frottage 07">
+            <p class="item-num">07.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(7)">
+            <img class="item-img" src="img/JPEG/Frotaje-08.jpg" alt="Frottage 08">
+            <p class="item-num">08.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(8)">
+            <img class="item-img" src="img/JPEG/Frotaje-09.jpg" alt="Frottage 09">
+            <p class="item-num">09.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(9)">
+            <img class="item-img" src="img/JPEG/Frotaje-10.jpg" alt="Frottage 10">
+            <p class="item-num">10.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(10)">
+            <img class="item-img" src="img/JPEG/Frotaje-11.jpg" alt="Frottage 11">
+            <p class="item-num">11.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(11)">
+            <img class="item-img" src="img/JPEG/Frotaje-12.jpg" alt="Frottage 12">
+            <p class="item-num">12.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(12)">
+            <img class="item-img" src="img/JPEG/Frotaje-13.jpg" alt="Frottage 13">
+            <p class="item-num">13.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(13)">
+            <img class="item-img" src="img/JPEG/Frotaje-14.jpg" alt="Frottage 14">
+            <p class="item-num">14.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(14)">
+            <img class="item-img" src="img/JPEG/Frotaje-15.jpg" alt="Frottage 15">
+            <p class="item-num">15.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(15)">
+            <img class="item-img" src="img/JPEG/Frotaje-16.jpg" alt="Frottage 16">
+            <p class="item-num">16.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(16)">
+            <img class="item-img" src="img/JPEG/Frotaje-17.jpg" alt="Frottage 17">
+            <p class="item-num">17.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(17)">
+            <img class="item-img" src="img/JPEG/Frotaje-18.jpg" alt="Frottage 18">
+            <p class="item-num">18.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(18)">
+            <img class="item-img" src="img/JPEG/frotaje-19.jpg" alt="Frottage 19">
+            <p class="item-num">19.</p>
+        </div>
+        <div class="item" onclick="abrirLightbox(19)">
+            <img class="item-img" src="img/JPEG/frotaje-20.jpg" alt="Frottage 20">
+            <p class="item-num">20.</p>
+        </div>
+    </div>
+
+ <footer>
+    <a class="btn-footer" href="investigacion.html">← Investigación</a>
+    <a class="btn-footer" href="mapa.html">Mapa interactivo →</a>
+</footer>
+
+    <div id="lightbox">
+        <button id="lightbox-cerrar" onclick="cerrarLightbox()">✕ cerrar</button>
+        <button id="lightbox-prev" onclick="navegar(-1)">←</button>
+        <img id="lightbox-img" src="" alt="">
+        <p id="lightbox-num"></p>
+        <button id="lightbox-next" onclick="navegar(1)">→</button>
+    </div>
+
+<script>
+    const imagenes = [
+        { src: 'img/JPEG/Frotaje-01.jpg', num: '01.' },
+        { src: 'img/JPEG/Frotaje-02.jpg', num: '02.' },
+        { src: 'img/JPEG/Frotaje-03.jpg', num: '03.' },
+        { src: 'img/JPEG/Frotaje-04.jpg', num: '04.' },
+        { src: 'img/JPEG/Frotaje-05.jpg', num: '05.' },
+        { src: 'img/JPEG/Frotaje-6.jpg',  num: '06.' },
+        { src: 'img/JPEG/Frotaje-7.jpg',  num: '07.' },
+        { src: 'img/JPEG/Frotaje-08.jpg', num: '08.' },
+        { src: 'img/JPEG/Frotaje-09.jpg', num: '09.' },
+        { src: 'img/JPEG/Frotaje-10.jpg', num: '10.' },
+        { src: 'img/JPEG/Frotaje-11.jpg', num: '11.' },
+        { src: 'img/JPEG/Frotaje-12.jpg', num: '12.' },
+        { src: 'img/JPEG/Frotaje-13.jpg', num: '13.' },
+        { src: 'img/JPEG/Frotaje-14.jpg', num: '14.' },
+        { src: 'img/JPEG/Frotaje-15.jpg', num: '15.' },
+        { src: 'img/JPEG/Frotaje-16.jpg', num: '16.' },
+        { src: 'img/JPEG/Frotaje-17.jpg', num: '17.' },
+        { src: 'img/JPEG/Frotaje-18.jpg', num: '18.' },
+        { src: 'img/JPEG/frotaje-19.jpg', num: '19.' },
+        { src: 'img/JPEG/frotaje-20.jpg', num: '20.' },
+    ];
+
+    let actual = 0;
+
+    function abrirLightbox(i) {
+        actual = i;
+        document.getElementById('lightbox-img').src = imagenes[i].src;
+        document.getElementById('lightbox-num').textContent = imagenes[i].num;
+        document.getElementById('lightbox').classList.add('activo');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarLightbox() {
+        document.getElementById('lightbox').classList.remove('activo');
+        document.body.style.overflow = '';
+    }
+
+    function navegar(dir) {
+        actual = (actual + dir + imagenes.length) % imagenes.length;
+        document.getElementById('lightbox-img').src = imagenes[actual].src;
+        document.getElementById('lightbox-num').textContent = imagenes[actual].num;
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') cerrarLightbox();
+        if (e.key === 'ArrowRight') navegar(1);
+        if (e.key === 'ArrowLeft') navegar(-1);
+    });
+
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('lightbox')) cerrarLightbox();
+    });
+</script>
+
+</body>
+</html>

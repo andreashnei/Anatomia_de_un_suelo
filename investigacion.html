@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigación — Anatomía de un Suelo Fracturado</title>
+    <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/investigacion.css">
+    <style>
+        @font-face {
+            font-family: 'Erosion';
+            src: url('css/NewFont-Regular.woff2') format('woff2'),
+                 url('css/NewFont-Regular.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'ApercuMono';
+            src: url('ApercuMonoProRegular.ttf') format('truetype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'ApercuMono';
+            src: url('ApercuMonoProBold.ttf') format('truetype');
+            font-weight: 700;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #fff200;
+            color: #231f20;
+            font-family: 'STIX Two Text', serif;
+        }
+
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+        .titulo-seccion { font-family: 'STIX Two Text', serif; font-size: 28px; font-weight: 700; line-height: 1.1; }
+        .subtitulo-seccion { font-family: 'STIX Two Text', serif; font-style: italic; font-size: 16px; margin-top: 4px; }
+        .texto-cuerpo { font-family: 'STIX Two Text', serif; font-size: 16px; line-height: 1.65; }
+        .texto-cuerpo p { margin-bottom: 16px; }
+        .texto-cuerpo p:last-child { margin-bottom: 0; }
+        .punto { display: inline-block; width: 12px; height: 12px; background: #231f20; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+        .caption { font-family: 'ApercuMono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+        .italic { font-style: italic; }
+
+        /* S1 HEADER */
+        .s1 { display: grid; grid-template-columns: 0.9fr 0.3fr 1fr; height: 1080px; }
+        .s1-col1 {
+    background: #fff200;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 16px;
+    overflow: hidden;
+}
+        .s1-supertitulo { font-family: 'STIX Two Text', serif; font-style: italic; font-size: 20px; text-transform: uppercase; line-height: 1.5; margin-bottom: 16px; text-align: center; }
+.s1-mapa { width: 80%; object-fit: contain; display: block; margin: 0 auto; }
+        .s1-col2 { overflow: hidden; }
+.s1-col3 { 
+    background: #fff200; 
+    padding: 28px 40px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-end; 
+    gap: 200px; 
+}        .logo-link img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+        .logo-link:hover { opacity: 0.7; }
+        .abstract-bloque { width: 100%; }
+        .abstract-label { font-family: 'STIX Two Text', serif; font-style: italic; font-size: 24px; display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
+        .abstract-label::after { content: ''; display: inline-block; width: 14px; height: 14px; background: #231f20; border-radius: 50%; }
+        .abstract-texto { font-family: 'STIX Two Text', serif; font-size: 22px; line-height: 1.65; }
+        .abstract-texto em { font-style: italic; }
+
+        /* S2 INTRO */
+        .s2 { display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: auto auto; min-height: 600px; }
+        .s2-texto { background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: flex-start; gap: 20px; }
+        .s2-foto-grande { grid-row: 1 / 3; min-height: 500px; }
+        .s2-foto-chica { min-height: 250px; }
+
+        /* S3 EL CUERPO */
+        .s3 { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+        .s3-fotos { display: grid; grid-template-rows: 1fr 1fr; }
+        .s3-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+
+        /* S4 LA MEMORIA */
+        .s4 { display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 600px; }
+        .s4-texto { background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s4-fotos { grid-column: 2 / 4; display: grid; grid-template-rows: 1fr 1fr; }
+
+        /* S5 ACUÍFEROS */
+        .s5 { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+        .s5-foto { min-height: 400px; }
+        .s5-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+
+        /* S6 EL SÍNTOMA */
+        .s6 { display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 600px; }
+        .s6-fotos-izq { display: grid; grid-template-rows: 1fr 1fr; }
+        .s6-texto { background: #fff200; padding: 40px 40px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s6-foto-der { min-height: 400px; }
+
+        /* S7 LA LESIÓN */
+        .s7 { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+        .s7-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s7-lista { padding-left: 20px; font-style: italic; }
+        .s7-lista li { margin-bottom: 6px; font-family: 'STIX Two Text', serif; font-size: 16px; }
+
+        /* S8 GRID FOTOS */
+        .s8 { display: grid; grid-template-columns: 2fr 1fr; min-height: 400px; }
+
+        /* S9 FILA FOTOS */
+        .s9 { display: grid; grid-template-columns: 1fr 1fr; min-height: 400px; }
+
+        /* S10 LA DISECCIÓN */
+        .s10 { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+        .s10-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+
+        /* S11 MAPA CTA */
+        .s11 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; min-height: 800px; }
+        .s11-foto-grande { grid-row: 1 / 3; }
+        .s12-texto { background: #fff200; padding: 60px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s12-titulo { font-family: 'ApercuMono', monospace; font-size: 24px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.2; }
+        .btn-mapa { display: inline-block; margin-top: 16px; font-family: 'ApercuMono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #231f20; text-decoration: none; border: 1.5px solid #231f20; padding: 14px 32px; transition: background 0.2s ease, color 0.2s ease; align-self: flex-start; }
+        .btn-mapa:hover { background: #231f20; color: #fff200; }
+
+        /* FOOTER */
+        .footer-final { background: #231f20; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; }
+        .footer-logo { font-family: 'Erosion', sans-serif; font-size: 36px; color: #fff200; text-transform: uppercase; line-height: 1.1; }
+        .footer-creditos { font-family: 'ApercuMono', monospace; font-size: 11px; letter-spacing: 0.15em; color: #fff200; text-align: right; line-height: 2; }
+
+
+        .desktop {
+            display: block;
+        }
+        .mobile {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .desktop {
+                display: none;
+            }
+            .mobile {
+                display: block;
+            }
+        }
+
+        img[src="img/fotos_investigacion/inv-02.png"] {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            img[src="img/fotos_investigacion/inv-02.png"] {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- S1 HEADER -->
+<section class="s1">
+    <div class="s1-col1">
+    <p class="s1-supertitulo">La erosión hídrica y sus<br>efectos en la vía pública</p>
+    <div style="display:flex; flex-direction:column; align-items:center; margin-top:-40px;">
+        <img class="s1-mapa" src="img/fotos_investigacion/inv-01.png" alt="Carta Hidrográfica" style="object-fit:contain; width:80%;">
+        <p class="caption" style="display:flex; justify-content:space-between; width:80%; margin-top:8px;">
+            <span>Carta hidrográfica</span>
+            <span>Valle de México 1862</span>
+        </p>
+    </div>
+</div>
+    <div class="s1-col2">
+        <img src="img/fotos_investigacion/inv-02.png" alt="Textura" style="object-fit:cover;">
+    </div>
+    <div class="s1-col3">
+        <a href="index.html" class="logo-link">
+            <img src="img/logo-inv.png" alt="Anatomía de un Suelo Fracturado" style="object-fit:contain;">
+        </a>
+        <div class="abstract-bloque">
+            <p class="abstract-label">Abstract</p>
+            <p class="abstract-texto">Este trabajo analiza cómo la erosión hídrica destruye las calles de Santa Martha Acatitla, Iztapalapa. El suelo de la zona es lacustre: arcillas blandas, fáciles de comprimir, que no fueron hechas para soportar el peso de la ciudad. Cuando llueve, el agua no tiene a dónde ir. Se acumula, se estanca, y se mueve por el suelo tratando de salir. Se filtra a través de las grietas arrastravndo y debilitando el suelo debajo del pavimento. Las calles se rompen. Se reparan. Se vuelven a romper. Este ciclo se seguirá replicando hasta no comprender el origen del problema: <em>el agua.</em></p>
+        </div>
+    </div>
+</section>
+
+<!-- S2 INTRO -->
+<section class="s2">
+    <div class="s2-texto">
+        <span class="punto"></span>
+        <div class="texto-cuerpo">
+            <p>Comprender el suelo como un cuerpo, nos permite analizarlo de manera <em>anatómica</em>, diseccionando el territorio en capas, ya que el problema no está en la superficie.<br><em>Está en todo lo que hay debajo.</em></p>
+        </div>
+    </div>
+    <div class="s2-foto-grande">
+        <img src="img/fotos_investigacion/inv-5.jpg" alt="Inundación" style="height:100%;">
+    </div>
+    <div class="s2-foto-chica">
+        <img src="img/fotos_investigacion/inv-6.jpg" alt="Bache">
+    </div>
+</section>
+
+<!-- S3 I. EL CUERPO -->
+<section class="s3">
+    <div class="s3-fotos">
+        <img src="img/fotos_investigacion/inv-07.jpg" alt="El cuerpo 1">
+        <img src="img/fotos_investigacion/inv-08.jpg" alt="El cuerpo 2">
+    </div>
+    <div class="s3-texto">
+        <div>
+            <p class="titulo-seccion"><span class="punto"></span>I. El cuerpo</p>
+            <p class="subtitulo-seccion">La ciudad y su suelo</p>
+        </div>
+        <div class="texto-cuerpo">
+            <p>La Ciudad de México tiene tres tipos de suelo.<br>
+            Zona 1: lomas, suelo firme, partes altas del valle.<br>
+            Zona 2: transición, entre firme y blando.<br>
+            Zona 3: lacustre, arcillas compresibles, el antiguo fondo de los lagos.<br>
+            Esta última es la más inestable, ahí se encuentra Iztapalapa.</p>
+            <p>Santha Martha es una parte de este gran cuerpo-ciudad. Su piel absorbe, se deteriora, se fractura. Su suelo, que también es piel, fue lago, que perdió el agua que lo sostenía, y que ahora carga con millones de personas, toneladas de concreto y un sistema de drenaje que no da abasto.</p>
+        </div>
+    </div>
+</section>
+
+<!-- S4 II. LA MEMORIA -->
+<section class="s4">
+    <div class="s4-texto">
+        <div>
+            <p class="titulo-seccion"><span class="punto"></span>II. La memoria</p>
+            <p class="subtitulo-seccion">El territorio y su historia</p>
+        </div>
+        <div class="texto-cuerpo">
+            <p>El Valle de México era un sistema de cinco lagos: Zumpango, Xaltocan, Xochimilco, Chalco y Texcoco. Santa Martha Acatitla estaba en esa zona lacustre: había ojos de agua, chinampas, cañaverales. El nombre lo dice: Acatitla, en náhuatl, significa "lugar de abundantes juncos".</p>
+            <p>Los pueblos que habitaron ese territorio convivían con el agua. Con la conquista española eso se acabó: vinieron las inundaciones, y la respuesta colonial fue secar los lagos.</p>
+            <p>Pero secar los lagos no fue suficiente. La ciudad creció, y crecer en un desierto lacustre tiene una consecuencia: hay que sacar agua potable de algún lado. Ese lugar fue el subsuelo.</p>
+        </div>
+    </div>
+    <div class="s4-fotos">
+        <img src="img/fotos_investigacion/inv-10.jpg" alt="Memoria 1">
+        <img src="img/fotos_investigacion/inv-11.jpg" alt="Memoria 2">
+    </div>
+</section>
+
+<!-- S5 ACUÍFEROS -->
+<section class="s5">
+    <div class="s5-foto">
+        <img src="img/fotos_investigacion/inv-12.jpg" alt="Acuíferos">
+    </div>
+    <div class="s5-texto">
+        <p class="caption italic">La sobreexplotación de acuíferos:</p>
+        <div class="texto-cuerpo">
+            <p>Un acuífero es una capa de sedimento saturada de agua. Debajo de la Ciudad de México existen varios de estos cuerpos de agua, residuos de los antiguos lagos. Durante siglos, se recargaban con el agua de lluvia que se filtraba por el suelo. El problema inició cuando la extracción superó la recarga natural.</p>
+            <p>Hoy, más del 70% del agua que consume la ciudad viene del subsuelo. Cada litro que se bombea, succiona el agua que llenaba los espacios entre partículas del suelo. Y cuando esos espacios se vacían, las arcillas que antes sostenía el agua pierden su estructura interna: colapsan sobre sí mismas. El suelo no desaparece, se compacta. Se encoge. Baja. En Iztapalapa, algunas zonas han bajado más de diez metros en el último siglo.</p>
+        </div>
+    </div>
+</section>
+
+<!-- S6 III. EL SÍNTOMA -->
+<section class="s6">
+    <div class="s6-fotos-izq">
+        <img src="img/fotos_investigacion/inv-13.jpg" alt="Síntoma 1">
+        <img src="img/fotos_investigacion/inv-14.jpg" alt="Síntoma 2">
+    </div>
+    <div class="s6-texto">
+        <div>
+            <p class="titulo-seccion"><span class="punto"></span>III. El síntoma</p>
+            <p class="subtitulo-seccion">El suelo sin agua y las inundaciones</p>
+        </div>
+        <div class="texto-cuerpo">
+            <p>Cuando se secaron los lagos, el suelo quedó compuesto por arcillas que antes el agua sostenía. Sin agua, estas arcillas se compactan, se encogen, y el suelo baja. No de manera uniforme: baja en distintas proporciones según la zona, generando desniveles. Esos desniveles hacen que el agua de lluvia ya no fluya bien: se estanca y no tiene salida.</p>
+            <p>El drenaje es el sistema circulatorio del territorio, al tener una infraestructura deficiente, se obstruye. Nunca creció al ritmo que la ciudad exigía y hoy ese sistema está saturado. El agua no circula. Se queda. Y mientras se queda, destruye.</p>
+            <p>La erosión se convierte en el síntoma visible: baches, fracturas, socavones.</p>
+        </div>
+    </div>
+    <div class="s6-foto-der">
+        <img src="img/fotos_investigacion/inv-15.jpg" alt="Síntoma 3" style="height:100%;">
+    </div>
+</section>
+
+<!-- S7 IV. LA LESIÓN -->
+<section class="s7">
+    <div class="s7-texto">
+        <div>
+            <p class="titulo-seccion"><span class="punto"></span>IV. La lesión</p>
+            <p class="subtitulo-seccion">La erosión hídrica y cómo destruye las vialidades</p>
+        </div>
+        <div class="texto-cuerpo">
+            <p>La erosión hídrica es un proceso: el agua desgasta, transporta y deposita partículas del suelo. Ocurre de dos maneras. En la superficie, el impacto del agua tiene la energía suficiente para desintegrar las partículas y amplificar las grietas existentes. Por dentro, el agua se filtra por esas grietas, debilita la base del pavimento y lo colapsa. En una ciudad-cuerpo estas fracturas comienzan a verse como lesiones.</p>
+            <ul class="s7-lista">
+                <li>Como toda lesión ignorada, tiende a empeorar.</li>
+                <li>La inundación erosiona.</li>
+                <li>La erosión abre grietas.</li>
+                <li>Las grietas empeoran la siguiente inundación.</li>
+            </ul>
+            <p>El bacheo, la repavimentación, la renivelación: todo eso trata el síntoma. Sin resolver la enfermedad.</p>
+        </div>
+    </div>
+    <div>
+        <img src="img/fotos_investigacion/inv-16.png" alt="La lesión" style="height:100%;object-fit:cover;">
+    </div>
+</section>
+
+<!-- S8 GRID FOTOS -->
+<section class="s8">
+    <img src="img/fotos_investigacion/inv-17.jpg" alt="Socavón" style="height:100%;">
+    <img src="img/fotos_investigacion/inv-18.jpg" alt="Textura pavimento">
+</section>
+
+<!-- S9 FILA FOTOS -->
+<section class="s9">
+    <img src="img/fotos_investigacion/inv-19.jpg" alt="Calle destruida" style="height:400px;">
+    <img src="img/fotos_investigacion/inv-20.jpg" alt="Fractura" style="height:400px;">
+</section>
+
+<!-- S10 V. LA DISECCIÓN -->
+<section class="s10">
+    <div style="background:#fff200;min-height:400px;">
+        <img src="img/fotos_investigacion/inv-09.png" alt="La disección" style="height:100%;object-fit:cover;">
+    </div>
+    <div class="s10-texto">
+        <div>
+            <p class="titulo-seccion"><span class="punto"></span>V. La disección</p>
+            <p class="subtitulo-seccion">Leer Santa Martha Acatitla por capas</p>
+        </div>
+        <div class="texto-cuerpo">
+            <p>Santa Martha Acatitla no es solo un territorio con calles rotas. Es un cuerpo enfermo cuyo diagnóstico requiere algo más que reparar la superficie. Para entender la lesión hay que abrirlo, separar sus capas y leer lo que cada una esconde: el suelo lacustre original, la historia de su transformación, la infraestructura que se le impuso encima, y el agua que sigue filtrándose entre todas ellas.</p>
+            <p>La erosión hídrica no solo fractura el suelo: condiciona cómo se mueve la gente, qué calles se usan, qué caminos se evitan. La lesión altera el cuerpo. Para comprenderla no basta con mirarla: hay que historizar, recorrer, mapear y registrar. Ver la grieta no como una falla técnica aislada, sino como el resultado visible de un suelo lacustre que se hunde, un drenaje que no funciona y decisiones históricas que nunca resolvieron el problema de fondo. Contextualizar la grieta es el primer paso para dejar de taparla.</p>
+        </div>
+    </div>
+</section>
+
+<!-- S11 MAPA INTERACTIVO CTA -->
+<section class="s11">
+    <div class="s11-foto-grande">
+        <img src="img/fotos_investigacion/inv-04.png" alt="Mapa Santa Martha" style="height:100%;object-fit:cover;">
+    </div>
+    <div style="min-height:400px;">
+        <img src="img/fotos_investigacion/inv-5.jpg" alt="Foto" style="height:100%;object-fit:cover;">
+    </div>
+    <div class="s12-texto">
+        <span class="punto"></span>
+        <p class="s12-titulo">Mapa interactivo//<br>Santa Martha Acatitla</p>
+        <div class="texto-cuerpo">
+            <p>Entra para conocer nuestra cartografía interactiva. Recorre cinco puntos de alta erosión hídrica en Santa Martha Acatitla. Explora sus coordenadas y las evidencias visuales de la problemática en la vía pública.</p>
+        </div>
+        <a href="mapa.html" class="btn-mapa">Entrar al mapa →</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-final">
+    <div class="footer-logo">
+        Anatomia de<br>un suelo<br>fracturado
+    </div>
+    <div class="footer-creditos">
+        Andrea Schneeweiss<br>
+        Alexa Villavicencio<br>
+        <br>
+        Centro — 2026
+    </div>
+</footer>
+
+</body>
+</html>

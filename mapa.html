@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo — Santa Martha Acatitla</title>
+    <style>
+        @font-face {
+            font-family: 'ApercuMono';
+            src: url('ApercuMonoProRegular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #000;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* VIDEO PRINCIPAL */
+        #video-mapa {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* BOTONES INVISIBLES SOBRE EL MAPA */
+        .punto-btn {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transform: translate(-50%, -50%);
+
+        }
+
+        /* Posiciones de cada punto — ajusta left/top según tu video */
+        #btn-1 { left: 42%; top: 27%; }
+        #btn-2 { left: 45%; top: 36%; }
+        #btn-3 { left: 48.5%; top: 47%; }
+        #btn-4 { left: 55.5%; top: 48%; }
+        #btn-5 { left: 67.5%; top: 55%; }
+
+        /* LIGHTBOX */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #lightbox.activo {
+            display: flex;
+        }
+
+        #video-punto {
+            max-width: 90vw;
+            max-height: 85vh;
+            display: block;
+        }
+
+        #btn-cerrar {
+            position: fixed;
+            top: 32px;
+            right: 40px;
+            font-family: 'ApercuMono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #fff200;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #btn-volver {
+            position: fixed;
+            top: 32px;
+            left: 40px;
+            font-family: 'ApercuMono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #fff200;
+            text-decoration: none;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="investigacion.html" id="btn-volver">← Investigación</a>
+
+    <!-- VIDEO PRINCIPAL DEL MAPA -->
+    <video id="video-mapa" autoplay loop muted playsinline>
+        <source src="video/Santa_martha_inicio.mp4" type="video/mp4">
+    </video>
+
+    <!-- BOTONES INVISIBLES -->
+    <button class="punto-btn" id="btn-1" onclick="abrirPunto('video/punto_1.mp4')"></button>
+    <button class="punto-btn" id="btn-2" onclick="abrirPunto('video/punto_2.mp4')"></button>
+    <button class="punto-btn" id="btn-3" onclick="abrirPunto('video/punto_3.mp4')"></button>
+    <button class="punto-btn" id="btn-4" onclick="abrirPunto('video/punto_4.mp4')"></button>
+    <button class="punto-btn" id="btn-5" onclick="abrirPunto('video/punto_5.mp4')"></button>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox">
+        <button id="btn-cerrar" onclick="cerrarPunto()">✕ cerrar</button>
+        <video id="video-punto" controls autoplay playsinline>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+
+<script>
+    function abrirPunto(src) {
+        const video = document.getElementById('video-punto');
+        video.querySelector('source').src = src;
+        video.load();
+        video.play();
+        document.getElementById('lightbox').classList.add('activo');
+        document.getElementById('video-mapa').pause();
+    }
+
+    function cerrarPunto() {
+        const video = document.getElementById('video-punto');
+        video.pause();
+        video.querySelector('source').src = '';
+        document.getElementById('lightbox').classList.remove('activo');
+        document.getElementById('video-mapa').play();
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') cerrarPunto();
+    });
+</script>
+
+</body>
+</html>
