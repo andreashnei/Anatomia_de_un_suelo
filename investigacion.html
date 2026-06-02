@@ -81,11 +81,41 @@
         .s5-foto { min-height: 400px; }
         .s5-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
 
-        /* S6 EL SÍNTOMA */
-        .s6 { display: grid; grid-template-columns: 1fr 1fr 1fr; min-height: 600px; }
-        .s6-fotos-izq { display: grid; grid-template-rows: 1fr 1fr; }
-        .s6-texto { background: #fff200; padding: 40px 40px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
-        .s6-foto-der { min-height: 400px; }
+    
+/* S6 EL SÍNTOMA */
+.s6 {
+    display: grid;
+    grid-template-columns: 0.6fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    background: #fff200;
+}
+.s6-col-izq {
+    grid-column: 1; grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+}
+.s6-col-izq img { width: 100%; height: auto; display: block; }
+.s6-foto-tm {
+    grid-column: 2; grid-row: 1;
+    background: #fff200;
+    padding: 8px 4px 8px 8px;
+}
+.s6-foto-tm img { width: 100%; height: auto; display: block; }
+.s6-foto-tr {
+    grid-column: 3; grid-row: 1;
+    background: #fff200;
+    padding: 8px 8px 8px 4px;
+}
+.s6-foto-tr img { width: 100%; height: auto; display: block; }
+.s6-texto {
+    grid-column: 2 / 4; grid-row: 2;
+    background: #ffffff;
+    padding: 24px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
 
         /* S7 TOP */
         .s7-top {
@@ -291,9 +321,17 @@
 
 <!-- S6 III. EL SÍNTOMA -->
 <section class="s6">
-    <div class="s6-fotos-izq">
-        <img src="img/fotos_investigacion/inv-13.jpg" alt="Síntoma 1">
-        <img src="img/fotos_investigacion/inv-14.jpg" alt="Síntoma 2">
+    <div class="s6-foto-tl">
+        <img src="img/fotos_investigacion/inv-13.jpg" alt="Textura b/n">
+    </div>
+    <div class="s6-foto-tm">
+        <img src="img/fotos_investigacion/inv-14.jpg" alt="Socavón amarillo 1">
+    </div>
+    <div class="s6-foto-tr">
+        <img src="img/fotos_investigacion/inv-15.jpg" alt="Socavón amarillo 2">
+    </div>
+    <div class="s6-foto-bl">
+        <img src="img/fotos_investigacion/inv-16.png" alt="Textura b/n 2">
     </div>
     <div class="s6-texto">
         <div>
@@ -305,9 +343,6 @@
             <p>El drenaje es el sistema circulatorio del territorio, al tener una infraestructura deficiente, se obstruye. Nunca creció al ritmo que la ciudad exigía y hoy ese sistema está saturado. El agua no circula. Se queda. Y mientras se queda, destruye.</p>
             <p>La erosión se convierte en el síntoma visible: baches, fracturas, socavones.</p>
         </div>
-    </div>
-    <div class="s6-foto-der">
-        <img src="img/fotos_investigacion/inv-15.jpg" alt="Síntoma 3" style="height:100%;">
     </div>
 </section>
 
