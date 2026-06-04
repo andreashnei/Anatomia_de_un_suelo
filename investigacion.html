@@ -13,12 +13,12 @@
         }
         @font-face {
             font-family: 'ApercuMono';
-            src: url('css/ApercuMonoPro-Regular.woff2') format('truetype');
+            src: url('ApercuMonoProRegular.ttf') format('truetype');
             font-weight: 400;
         }
         @font-face {
             font-family: 'ApercuMono';
-            src: url('css/ApercuMonoPro-Bold.woff2') format('truetype');
+            src: url('ApercuMonoProBold.ttf') format('truetype');
             font-weight: 700;
         }
 
@@ -71,115 +71,55 @@
         .s3-fotos { display: grid; grid-template-rows: 1fr 1fr; }
         .s3-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
 
-   /* S4 LA MEMORIA */
-<!-- S4 II. LA MEMORIA -->
-<section class="s4">
-    <div class="s4-texto">
-        <div>
-            <p class="titulo-seccion"><span class="punto"></span>II. La memoria</p>
-            <p class="subtitulo-seccion">El territorio y su historia</p>
-        </div>
-        <div class="texto-cuerpo">
-            <p>El Valle de México era un sistema de cinco lagos: Zumpango, Xaltocan, Xochimilco, Chalco y Texcoco. Santa Martha Acatitla estaba en esa zona lacustre: había ojos de agua, chinampas, cañaverales. El nombre lo dice: Acatitla, en náhuatl, significa "lugar de abundantes juncos".</p>
-            <p>Los pueblos que habitaron ese territorio convivían con el agua. Con la conquista española eso se acabó: vinieron las inundaciones, y la respuesta colonial fue secar los lagos.</p>
-            <p>Pero secar los lagos no fue suficiente. La ciudad creció, y crecer en un desierto lacustre tiene una consecuencia: hay que sacar agua potable de algún lado. Ese lugar fue el subsuelo.</p>
-        </div>
-    </div>
-    <div class="s4-textura">
-        <img src="img/fotos_investigacion/inv-09.png" alt="Textura">
-    </div>
-    <div class="s4-foto-tm">
-        <img src="img/fotos_investigacion/inv-10.jpg" alt="Memoria 1">
-        <img src="img/fotos_investigacion/inv-03.jpg" alt="Memoria 2">
-    </div>
-    <div class="s4-foto-dr">
-        <img src="img/fotos_investigacion/inv-11.jpg" alt="Grieta vertical">
-    </div>
-</section>
+        /* S4 LA MEMORIA */
+        .s4 {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 400px;
+        }
+        .s4-texto { grid-area: 1 / 1 / 2 / 5; background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s4-textura { grid-area: 1 / 5 / 2 / 7; background: #ffffff; overflow: hidden; }
+        .s4-textura img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s4-foto-tm { grid-area: 1 / 7 / 2 / 10; display: grid; grid-template-rows: 1fr 1fr; overflow: hidden; }
+        .s4-foto-tm img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s4-foto-dr { grid-area: 1 / 10 / 2 / 13; overflow: hidden; }
+        .s4-foto-dr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-<!-- S5 ACUÍFEROS -->
-<section class="s5">
-    <div class="s5-foto">
-        <img src="img/fotos_investigacion/inv-12.jpg" alt="Acuíferos">
-    </div>
-    <div class="s5-texto">
-        <p class="caption italic">La sobreexplotación de acuíferos:</p>
-        <div class="texto-cuerpo">
-            <p>Un acuífero es una capa de sedimento saturada de agua. Debajo de la Ciudad de México existen varios de estos cuerpos de agua, residuos de los antiguos lagos. Durante siglos, se recargaban con el agua de lluvia que se filtraba por el suelo. El problema inició cuando la extracción superó la recarga natural.</p>
-            <p>Hoy, más del 70% del agua que consume la ciudad viene del subsuelo. Cada litro que se bombea, succiona el agua que llenaba los espacios entre partículas del suelo. Y cuando esos espacios se vacían, las arcillas que antes sostenía el agua pierden su estructura interna: colapsan sobre sí mismas. El suelo no desaparece, se compacta. Se encoge. Baja. En Iztapalapa, algunas zonas han bajado más de diez metros en el último siglo.<span class="punto" style="float:right; margin-top:8px;"></span></p>
-        </div>
-    </div>
-</section>
+        /* S5 ACUÍFEROS */
+        .s5 { display: grid; grid-template-columns: 1fr 2fr; min-height: 350px; }
+        .s5-foto { overflow: hidden; }
+        .s5-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s5-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
 
- /* S4 LA MEMORIA */
-.s4 {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 400px;
-}
-.s4-texto { grid-area: 1 / 1 / 2 / 5; background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
-.s4-textura { grid-area: 1 / 5 / 2 / 7; background: #ffffff; overflow: hidden; }
-.s4-textura img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.s4-foto-tm { grid-area: 1 / 7 / 2 / 10; display: grid; grid-template-rows: 1fr 1fr; overflow: hidden; }
-.s4-foto-tm img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.s4-foto-dr { grid-area: 1 / 10 / 2 / 13; overflow: hidden; }
-.s4-foto-dr img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* S5 ACUÍFEROS */
-.s5 {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    min-height: 350px;
-}
-.s5-foto { overflow: hidden; }
-.s5-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.s5-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
-
-/* S6 EL SÍNTOMA */
-.s6 {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    min-height: 700px;
-}
-.s6-foto-tl { grid-area: 1 / 1 / 3 / 3; overflow: hidden; }
-.s6-foto-tl img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.s6-foto-tm { grid-area: 1 / 3 / 4 / 6; background: #fff200; padding: 8px 4px 8px 8px; overflow: hidden; }
-.s6-foto-tm img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.s6-foto-tr { grid-area: 1 / 6 / 4 / 11; background: #fff200; padding: 8px 8px 8px 4px; overflow: hidden; }
-.s6-foto-tr img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.s6-foto-bl { grid-area: 3 / 1 / 7 / 3; overflow: hidden; }
-.s6-foto-bl { grid-area: 3 / 1 / 7 / 3; overflow: hidden; background: #ffffff; }
-.s6-texto { grid-area: 4 / 3 / 7 / 11; background: #ffffff; padding: 24px 48px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+        /* S6 EL SÍNTOMA */
+        .s6 {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            min-height: 700px;
+        }
+        .s6-foto-tl { grid-area: 1 / 1 / 3 / 3; overflow: hidden; }
+        .s6-foto-tl img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s6-foto-tm { grid-area: 1 / 3 / 4 / 6; background: #fff200; padding: 8px 4px 8px 8px; overflow: hidden; }
+        .s6-foto-tm img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s6-foto-tr { grid-area: 1 / 6 / 4 / 11; background: #fff200; padding: 8px 8px 8px 4px; overflow: hidden; }
+        .s6-foto-tr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s6-foto-bl { grid-area: 3 / 1 / 7 / 3; overflow: hidden; background: #ffffff; }
+        .s6-foto-bl img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .s6-texto { grid-area: 4 / 3 / 7 / 11; background: #ffffff; padding: 24px 48px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
 
         /* S7 TOP */
-        .s7-top {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 500px;
-        }
-        .s7-texto {
-            grid-column: 1;
-            background: #fff200;
-            padding: 40px 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 24px;
-        }
+        .s7-top { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 500px; }
+        .s7-texto { grid-column: 1; background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
         .s7-foto-grande { grid-column: 2; overflow: hidden; }
         .s7-foto-grande img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .s7-lista { padding-left: 20px; font-style: italic; }
         .s7-lista li { margin-bottom: 6px; font-family: 'STIX Two Text', serif; font-size: 16px; }
 
         /* S7 BOTTOM */
-        .s7-bottom {
-            display: grid;
-            grid-template-columns: 1fr 1fr 0.4fr;
-            grid-template-rows: 400px 400px;
-        }
+        .s7-bottom { display: grid; grid-template-columns: 1fr 1fr 0.4fr; grid-template-rows: 400px 400px; }
         .s7-foto-bl { grid-column: 1; grid-row: 1; overflow: hidden; }
         .s7-foto-bl img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .s7-foto-bm { grid-column: 2; grid-row: 1; overflow: hidden; }
@@ -192,40 +132,15 @@
         .s7-textura img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* S10 LA DISECCIÓN */
-        .s10 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-        .s10-texto {
-            grid-column: 1; grid-row: 1;
-            background: #ffffff;
-            position: relative;
-            overflow: hidden;
-            padding: 40px 48px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 24px;
-        }
-        .s10-texto-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            pointer-events: none;
-        }
+        .s10 { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 400px; }
+        .s10-texto { grid-column: 1; grid-row: 1; background: #ffffff; position: relative; overflow: hidden; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s10-texto-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; pointer-events: none; }
         .s10-texto-contenido { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 24px; }
         .s10-foto-br { grid-column: 2; grid-row: 1; overflow: hidden; }
         .s10-foto-br img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* S11 MAPA CTA */
-        .s11 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 300px 300px auto;
-        }
+        .s11 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 300px 300px auto; }
         .s11-col-izq { grid-column: 1; grid-row: 1 / 3; display: flex; flex-direction: column; }
         .s11-col-izq img { width: 100%; flex: 1; object-fit: cover; display: block; }
         .s11-foto-tm { grid-column: 2; grid-row: 1 / 3; background: #ffffff; overflow: hidden; }
@@ -243,19 +158,11 @@
         .footer-final { background: #231f20; padding: 10px 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 20px; }
         .footer-logo { width: 500px; margin-left: -20px; }
         .footer-logo img { width: 100%; height: auto; object-fit: contain; }
-        .footer-contacto { display: flex; flex-direction: column; gap: 8px; position: relative; top: -28px;}
+        .footer-contacto { display: flex; flex-direction: column; gap: 8px; }
         .footer-contacto a { font-family: 'ApercuMono', monospace; font-size: 18px; letter-spacing: 0.1em; color: #fff200; text-decoration: none; }
         .footer-contacto a:hover { text-decoration: underline; }
-        .footer-redes {     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-    position: relative;
-    top: -10px; }
-        .footer-redes-top { display: flex;
-    gap: 4px;
-    align-items: flex-start;
-    flex-direction: column; }
+        .footer-redes { display: flex; flex-direction: column; align-items: flex-end; gap: 40px; }
+        .footer-redes-top { display: flex; gap: 20px; align-items: center; }
         .footer-redes-top span { font-family: 'ApercuMono', monospace; font-size: 18px; letter-spacing: 0.1em; color: #fff200; }
         .footer-centro-logo { width: 200px; height: auto; object-fit: contain; margin-top: 12px; }
         .footer-label { font-family: 'ApercuMono', monospace; font-size: 18px; letter-spacing: 0.15em; text-transform: uppercase; color: #fff200; }
@@ -312,7 +219,7 @@
 <section class="s3">
     <div class="s3-fotos">
         <img src="img/fotos_investigacion/inv-07.jpg" alt="El cuerpo 1">
-        <img src="img/fotos_investigacion/inv-08.png" alt="El cuerpo 2">
+        <img src="img/fotos_investigacion/inv-08.jpg" alt="El cuerpo 2">
     </div>
     <div class="s3-texto">
         <div>
@@ -353,18 +260,21 @@
     <div class="s4-foto-dr">
         <img src="img/fotos_investigacion/inv-11.jpg" alt="Grieta vertical">
     </div>
-    <div class="s4-foto-bl">
+</section>
+
+<!-- S5 ACUÍFEROS -->
+<section class="s5">
+    <div class="s5-foto">
         <img src="img/fotos_investigacion/inv-12.jpg" alt="Acuíferos">
     </div>
-    <div class="s4-texto-b">
-        <p class="caption italic">La sobreexplotación de acuíferos:</p>
+    <div class="s5-texto">
+       <p style="font-family: 'STIX Two Text', serif; font-style: italic; font-size: 20px; margin-bottom: 16px;">La sobre-explotación de acuíferos:</p>
         <div class="texto-cuerpo">
             <p>Un acuífero es una capa de sedimento saturada de agua. Debajo de la Ciudad de México existen varios de estos cuerpos de agua, residuos de los antiguos lagos. Durante siglos, se recargaban con el agua de lluvia que se filtraba por el suelo. El problema inició cuando la extracción superó la recarga natural.</p>
             <p>Hoy, más del 70% del agua que consume la ciudad viene del subsuelo. Cada litro que se bombea, succiona el agua que llenaba los espacios entre partículas del suelo. Y cuando esos espacios se vacían, las arcillas que antes sostenía el agua pierden su estructura interna: colapsan sobre sí mismas. El suelo no desaparece, se compacta. Se encoge. Baja. En Iztapalapa, algunas zonas han bajado más de diez metros en el último siglo.<span class="punto" style="float:right; margin-top:8px;"></span></p>
         </div>
     </div>
 </section>
-
 
 <!-- S6 III. EL SÍNTOMA -->
 <section class="s6">
@@ -379,7 +289,6 @@
     </div>
     <div class="s6-foto-bl">
         <img src="img/fotos_investigacion/inv-16.png" alt="Textura b/n 2">
-
     </div>
     <div class="s6-texto">
         <div>
