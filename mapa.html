@@ -20,7 +20,6 @@
             height: 100vh;
         }
 
-        /* VIDEO PRINCIPAL */
         #video-mapa {
             position: fixed;
             top: 0; left: 0;
@@ -30,7 +29,51 @@
             z-index: 1;
         }
 
-        /* BOTONES INVISIBLES SOBRE EL MAPA */
+        /* BANNER */
+        #banner {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            background: #000000;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        #banner-instruccion {
+            font-family: 'ApercuMono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #fff200;
+        }
+
+        #banner-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-shrink: 0;
+            margin-left: 40px;
+        }
+
+        #banner-links a {
+            font-family: 'ApercuMono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #fff200;
+            text-decoration: none;
+            border-bottom: 1px solid #fff200;
+            padding-bottom: 2px;
+            transition: opacity 0.2s;
+        }
+
+        #banner-links a:hover { opacity: 0.6; }
+
+        /* BOTONES INVISIBLES */
         .punto-btn {
             position: fixed;
             width: 40px;
@@ -41,7 +84,6 @@
             cursor: pointer;
             z-index: 10;
             transform: translate(-50%, -50%);
-
         }
 
         #btn-1 { left: 42%; top: 27%; }
@@ -62,9 +104,7 @@
             flex-direction: column;
         }
 
-        #lightbox.activo {
-            display: flex;
-        }
+        #lightbox.activo { display: flex; }
 
         #video-punto {
             max-width: 90vw;
@@ -85,26 +125,20 @@
             border: none;
             cursor: pointer;
         }
-
-        #btn-volver {
-            position: fixed;
-            top: 32px;
-            left: 40px;
-            font-family: 'ApercuMono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #fff200;
-            text-decoration: none;
-            z-index: 20;
-        }
     </style>
 </head>
 <body>
 
-    <a href="investigacion.html" id="btn-volver">← Investigación</a>
+    <!-- BANNER -->
+    <div id="banner">
+        <p id="banner-instruccion">Selecciona los distintos puntos del mapa para explorar las evidencias de erosión hídrica en Santa Martha Acatitla, Iztapalapa</p>
+        <div id="banner-links">
+            <a href="index.html">Inicio</a>
+            <a href="investigacion.html">Investigación</a>
+        </div>
+    </div>
 
-    <!-- VIDEO PRINCIPAL DEL MAPA -->
+    <!-- VIDEO PRINCIPAL -->
     <video id="video-mapa" autoplay loop muted playsinline>
         <source src="https://res.cloudinary.com/dpfqraeom/video/upload/v1780025423/Santa_martha_inicio_hxtwho.mp4" type="video/mp4">
     </video>
@@ -132,6 +166,7 @@
         video.play();
         document.getElementById('lightbox').classList.add('activo');
         document.getElementById('video-mapa').pause();
+        document.getElementById('banner').classList.add('oculto');
     }
 
     function cerrarPunto() {

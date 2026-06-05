@@ -13,12 +13,12 @@
         }
         @font-face {
             font-family: 'ApercuMono';
-            src: url('ApercuMonoProRegular.ttf') format('truetype');
+            src: url('css/ApercuMonoPro-Regular.woff') format('truetype');
             font-weight: 400;
         }
         @font-face {
             font-family: 'ApercuMono';
-            src: url('ApercuMonoProBold.ttf') format('truetype');
+            src: url('css/ApercuMonoPro-Bold.woff') format('truetype');
             font-weight: 700;
         }
 
@@ -42,7 +42,7 @@
         .italic { font-style: italic; }
 
         /* S1 HEADER */
-        .s1 { display: grid; grid-template-columns: 0.9fr 0.3fr 1fr; height: 1080px; }
+        .s1 { display: grid; grid-template-columns: 0.9fr 0.3fr 1fr; height: 90px; }
         .s1-col1 { background: #fff200; padding: 28px 24px; display: flex; flex-direction: column; justify-content: flex-start; gap: 16px; overflow: hidden; }
         .s1-supertitulo { font-family: 'STIX Two Text', serif; font-style: italic; font-size: 20px; text-transform: uppercase; line-height: 1.5; margin-bottom: 16px; text-align: center; }
         .s1-mapa { width: 80%; object-fit: contain; display: block; margin: 0 auto; }
@@ -57,32 +57,67 @@
         .abstract-texto em { font-style: italic; }
 
         /* S2 INTRO */
-        .s2 { display: grid; grid-template-columns: 2fr 0.3fr 3fr; grid-template-rows: 1fr 1fr; min-height: 600px; }
-        .s2-texto { background: #fff200; padding: 32px 28px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; grid-row: 1; grid-column: 1; }
-        .s2-franja { grid-column: 2; grid-row: 1 / 3; overflow: hidden; }
+        .s2 {
+            display: grid;
+            grid-template-columns: 1fr 0.4fr 1.5fr;
+            grid-template-rows: 300px 350px;
+        }
+        .s2-texto {
+    grid-column: 1; grid-row: 1;
+    background-image: url('img/fotos_investigacion/inv-04.png');
+    background-size: cover;
+    background-position: center;
+    background-color: white;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 18px;
+}
+        .s2-franja { grid-column: 2; grid-row: 1 / 3; overflow: hidden; background: #ffffff; }
         .s2-franja img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .s2-foto-grande { grid-column: 3; grid-row: 1 / 3; overflow: hidden; }
         .s2-foto-grande img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .s2-foto-chica { grid-row: 2; grid-column: 1; overflow: hidden; }
+        .s2-foto-chica { grid-column: 1; grid-row: 2; overflow: hidden; }
         .s2-foto-chica img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* S3 EL CUERPO */
-        .s3 { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-        .s3-fotos { display: grid; grid-template-rows: 1fr 1fr; }
-        .s3-texto { background: #fff200; padding: 40px 48px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
-
+.s3 {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 0.8fr;
+    grid-template-rows: auto;
+    background: #ffffff;
+}
+.s3-foto-izq { grid-column: 1; grid-row: 1; overflow: hidden; }
+.s3-foto-izq img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.s3-texto {
+    grid-column: 2; grid-row: 1;
+    background: #ffffff;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+}
+.s3-foto-der { grid-column: 3; grid-row: 1; overflow: hidden; background: #ffffff; align-self: start; }
+.s3-foto-der img { width: 100%; height: auto; display: block; }
+        
         /* S4 LA MEMORIA */
         .s4 {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: 400px;
+            grid-template-columns: repeat(9, 1fr);
+            grid-template-rows: repeat(4, auto);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
         }
-        .s4-texto { grid-area: 1 / 1 / 2 / 5; background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
-        .s4-textura { grid-area: 1 / 5 / 2 / 7; background: #ffffff; overflow: hidden; }
+        .s4-texto { grid-area: 1 / 1 / 5 / 4; background: #fff200; padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .s4-textura { grid-area: 1 / 4 / 5 / 5; background: #ffffff; overflow: hidden; }
         .s4-textura img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .s4-foto-tm { grid-area: 1 / 7 / 2 / 10; display: grid; grid-template-rows: 1fr 1fr; overflow: hidden; }
-        .s4-foto-tm img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .s4-foto-dr { grid-area: 1 / 10 / 2 / 13; overflow: hidden; }
+        .s4-foto-tr { grid-area: 1 / 5 / 3 / 8; overflow: hidden; }
+        .s4-foto-tr img { width: 100%; height: auto; display: block; }
+        .s4-foto-mr { grid-area: 3 / 5 / 5 / 8; overflow: hidden; }
+        .s4-foto-mr img { width: 100%; height: auto; display: block; }
+        .s4-foto-dr { grid-area: 1 / 8 / 5 / 10; overflow: hidden; }
         .s4-foto-dr img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* S5 ACUÍFEROS */
@@ -217,9 +252,8 @@
 
 <!-- S3 I. EL CUERPO -->
 <section class="s3">
-    <div class="s3-fotos">
-        <img src="img/fotos_investigacion/inv-07.jpg" alt="El cuerpo 1">
-        <img src="img/fotos_investigacion/inv-08.jpg" alt="El cuerpo 2">
+    <div class="s3-foto-izq">
+        <img src="img/fotos_investigacion/inv-07.jpg" alt="Carro inundado">
     </div>
     <div class="s3-texto">
         <div>
@@ -234,6 +268,9 @@
             Esta última es la más inestable, ahí se encuentra Iztapalapa.</p>
             <p>Santha Martha es una parte de este gran cuerpo-ciudad. Su piel absorbe, se deteriora, se fractura. Su suelo, que también es piel, fue lago, que perdió el agua que lo sostenía, y que ahora carga con millones de personas, toneladas de concreto y un sistema de drenaje que no da abasto.</p>
         </div>
+    </div>
+    <div class="s3-foto-der">
+        <img src="img/fotos_investigacion/inv-08.png" alt="Textura suelo">
     </div>
 </section>
 
@@ -253,8 +290,10 @@
     <div class="s4-textura">
         <img src="img/fotos_investigacion/inv-09.png" alt="Textura">
     </div>
-    <div class="s4-foto-tm">
+    <div class="s4-foto-tr">
         <img src="img/fotos_investigacion/inv-10.jpg" alt="Memoria 1">
+    </div>
+    <div class="s4-foto-mr">
         <img src="img/fotos_investigacion/inv-03.jpg" alt="Memoria 2">
     </div>
     <div class="s4-foto-dr">
@@ -268,7 +307,7 @@
         <img src="img/fotos_investigacion/inv-12.jpg" alt="Acuíferos">
     </div>
     <div class="s5-texto">
-       <p style="font-family: 'STIX Two Text', serif; font-style: italic; font-size: 20px; margin-bottom: 16px;">La sobre-explotación de acuíferos:</p>
+        <p style="font-family: 'STIX Two Text', serif; font-style: italic; font-size: 16px; margin-bottom: 16px;">La sobreexplotación de acuíferos:</p>
         <div class="texto-cuerpo">
             <p>Un acuífero es una capa de sedimento saturada de agua. Debajo de la Ciudad de México existen varios de estos cuerpos de agua, residuos de los antiguos lagos. Durante siglos, se recargaban con el agua de lluvia que se filtraba por el suelo. El problema inició cuando la extracción superó la recarga natural.</p>
             <p>Hoy, más del 70% del agua que consume la ciudad viene del subsuelo. Cada litro que se bombea, succiona el agua que llenaba los espacios entre partículas del suelo. Y cuando esos espacios se vacían, las arcillas que antes sostenía el agua pierden su estructura interna: colapsan sobre sí mismas. El suelo no desaparece, se compacta. Se encoge. Baja. En Iztapalapa, algunas zonas han bajado más de diez metros en el último siglo.<span class="punto" style="float:right; margin-top:8px;"></span></p>
